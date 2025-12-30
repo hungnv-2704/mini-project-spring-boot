@@ -15,21 +15,17 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 
-    // Hàm này sẽ tự động chạy ngay sau khi ứng dụng khởi động thành công
     @Bean
     public CommandLineRunner initData(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         return args -> {
-            // Kiểm tra nếu chưa có user nào trong DB thì mới tạo mới
             if (userRepository.count() == 0) {
                 
-                // Tạo tài khoản Admin
                 User admin = new User();
                 admin.setUsername("admin");
-                admin.setPassword(passwordEncoder.encode("admin123")); // Mã hóa mật khẩu
+                admin.setPassword(passwordEncoder.encode("admin123"));
                 admin.setRole("ROLE_ADMIN");
                 userRepository.save(admin);
 
-                // Tạo tài khoản User thường
                 User user = new User();
                 user.setUsername("user");
                 user.setPassword(passwordEncoder.encode("user123"));
