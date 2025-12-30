@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Danh sách nhân viên</h2>
+    <a th:href="@{/view/employees/add}" class="btn btn-primary">Thêm nhân viên</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="emp : ${employees}">
+                <td th:text="${emp.id}"></td>
+                <td th:text="${emp.name}"></td>
+                <td th:text="${emp.email}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
